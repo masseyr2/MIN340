@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Ryan's Personality Test
+		</title>
+        <meta charset="utf-8"/>
+      
+	</head>
+
+<style>
+	.choices{
+		width: 400px;
+		height: 300px; 
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.choices:hover{
+		
+		padding:0px;
+		border:3px solid green;
+		border-radius:10px;
+	
+	}
+	#intro{
+		width: 75%;
+		background-color: white;
+		color: black;
+		margin-left: auto;
+		margin-right:auto; 
+	}
+	#PersonalityQuiz{
+		visibility: hidden;
+		width: 75%;
+		background-color: white;
+		border: 5px solid black;
+		border-radius:10px;
+		color: black;
+		margin-left: auto;
+		margin-right:auto; 
+		padding:10px;
+		
+	}
+	
+	body{
+		 
+		font-size: 1.5em;
+		background-color: silver; 
+	}
+	 
+	@font-face {
+    font-family: Personality;
+    src: url("SundayMorningPersonalUse.otf");
+	}
+	h1{
+		text-align:center;
+		font-family: Personality;
+	}
+</style>	
+<body>
+
+	<h1>Personality Quiz</h1>
+    <div id="intro">
+        Welcome to the Personality Quiz. Based on the room color scheme, click on the one that attracts you the most.
+        <br> <br>
+        <span id="ready">Ready to play? 
+		<input type="submit" id="ButtonYes" value="Yes"></span>
+		<div id="NameForm" style="visibility: hidden;">
+			What is your name? <input type="text" id="NameBox" placeholder="Name goes here">
+			<button  id="SubmitNameButton" >Submit</button>
+		</div>	
+    </div>
+	
+	 
+	<div id="PersonalityQuiz"> 
+		<h2 id="NameHere"></h2> 
+		
+		<h2>Which of these room colors attract you the most?</h2>
+		<div id="result"></div>
+		<img src="images/redcolor.jpg" id="choiceRed" class="choices">
+		<img src="images/blackgreywhite.jpg" id="choiceBlack" class="choices">
+		<img src="images/yellowLemon.jpg" id="choiceYellow" class="choices">
+		<img src="images/bluesCalm_2.jpg" id="choiceBlue" class="choices"> 
+		<img src="images/greenBedroom.jpg" id="choiceGreen" class="choices">
+	</div>
+</body>
+
+<script>
+	var intro = document.querySelector("#intro");
+	var nameIs = document.querySelector("#NameBox");
+	var ready = document.querySelector("#ready");
+	var nameForm = document.querySelector("#NameForm");
+	var NameGoingTo = document.querySelector("#NameHere");
+	var NameButton = document.querySelector("#SubmitNameButton");
+	NameButton.addEventListener("click", changeName, false);
+	var PersonalityQuiz = document.querySelector("#PersonalityQuiz"); 
+	var bodyColor = document.querySelector("body");
+	document.getElementById("ButtonYes").addEventListener("click", function()
+	{
+		document.getElementById("NameForm").style.visibility = "visible";
+		ready.style.visibility = "hidden";
+		
+	}); 
+	 
+	var choiceA = document.querySelector("#choiceRed");
+		choiceA.addEventListener("click", showRed, false);
+	var choiceB = document.querySelector("#choiceBlack");
+		choiceB.addEventListener("click", showBlack, false);
+	var choiceC = document.querySelector("#choiceYellow");
+		choiceC.addEventListener("click", showYellow, false);
+	var choiceD = document.querySelector("#choiceBlue");
+		choiceD .addEventListener("click", showBlue, false);
+	var choiceE = document.querySelector("#choiceGreen");
+		choiceE.addEventListener("click", showGreen, false);
+	var result = document.querySelector("#result");
+	 
+		
+	function showRed()  //Red
+	{
+		result.innerHTML ="You picked the red room; Your personality is firely, full of action.";
+		bodyColor.style.backgroundColor = "red";
+	}
+	function showBlue() //blue
+	{
+		result.innerHTML =  "You picked the calm blues. Your personality is more easy going, and calm.";
+		bodyColor.style.backgroundColor = "blue";
+	}
+	
+	function showYellow() // neutral
+	{
+		result.innerHTML = "You picked the Yellow Room; Your personality is bubbly, fun, cheerful, and always happy.";
+		bodyColor.style.backgroundColor = "yellow";
+	}
+	function showGreen() // green
+	{
+		result.innerHTML = "You picked the Green Room. Your personality is more natural, caring, and more quiet! ";
+		bodyColor.style.backgroundColor = "green";
+	}
+	function showBlack() // black, white, and grey
+	{
+		result.innerHTML = "You picked the Black, White, and Grey. Your personality is neutral, and simple. ";
+		bodyColor.style.backgroundColor = "black";
+		bodyColor.style.color = "white";
+	}
+	function changeName()
+	{	
+		NameGoingTo.innerHTML =  "Welcome " +nameIs.value;
+		nameForm.style.visibility = "hidden"; 
+		nameForm.style.visibility = "hidden"; 
+		PersonalityQuiz.style.visibility = "visible";
+		intro.style.height = "0px";
+		intro.style.visibility = "hidden";
+	}
+</script>
+</html>
+
+
+	
+	
+	
