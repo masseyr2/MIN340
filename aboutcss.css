@@ -1,0 +1,95 @@
+#textLayer{
+	display: block;
+    overflow: hidden;
+    color: #fff;
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+	padding-right: 15px;
+    -webkit-transform: translate3D (1, 0, 4);
+	width: 500px;
+	float: right;
+}
+span{
+	color: yellow;
+	font-style:italics;
+	
+}
+li{
+	/*list-style: circle inside url("arrow.png");*/
+	list-style: none;
+}
+#BackgroundImageLayer{
+	position: relative;
+    background-image:url("rcm_wide.jpg");
+	
+	background-repeat:no-repeat;
+    width:1800px;
+	height:800px;  
+   
+}
+#BlackGroundLayer{
+ position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    width:1200px;
+    height:900px;
+    top: 0;
+    -webkit-transform: translate3D (0, 0, 1);
+}
+body{
+ background: #000;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 2em 2em 4em;
+}
+@font-face {
+    font-family:SundayMorningPersonalUse;
+    src: url("SundayMorningPersonalUse.otf");
+}
+
+h1, h2, h3, h4, h5, h6, li {
+    color: #fff;
+    font-weight: 800; 
+    line-height: 1.5;
+}
+
+h1 {
+    color: yellow;
+    font-weight:200;
+    font-family: "SundayMorningPersonalUse", serif;
+    font-size:4em;
+    margin-top: 100px;
+}
+
+h2 {
+    color: orange;
+    margin-top: 1.3em;
+}
+
+h6 {
+    color: gray;
+    font-family:monospace;
+}
+
+p {
+    color:lightgrey;
+}
+a{
+	color:white;
+}
+a:hover{
+	animation-name: linking;
+    animation-duration: 5s;
+}
+/* The animation code */
+@keyframes linking {
+    0%   {background-color: red;color: white;}
+    25%  {background-color: yellow; color: black;}
+    50%  {background-color: blue; color: yellow;}
+    100% {background-color: green; }
+}
