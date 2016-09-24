@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Fly Guy: Can You Guess Where he is?
+		</title>
+        <meta charset="utf-8"/>
+        
+	</head>
+
+<style>
+	 
+	@font-face {
+    font-family: Personality;
+    src: url("SundayMorningPersonalUse.otf"); 
+	}
+	h1{
+		text-align:center;
+		font-family: Personality;
+	}
+	#intro{
+		width: 50%;
+		border: 4px solid black;
+		background-color: rgba(128,128,128,0.5);
+		text-align:center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom:20px;
+		
+	}
+	#gameBoard{
+		width: 300px; 
+		height: 300px;
+		margin-left:auto;
+		margin-right:auto;
+		background-image:url("images/grid.png");
+		background-size: stretch;
+		visibility: hidden;
+		
+	}
+	#fly{
+		height:40px;
+		width: 40px;
+		
+	}
+	#hintIs{
+		font-size:1em;
+		font-weight:bold;
+		
+	}
+	#holder{
+	position: relative;
+	top:275px;
+	left:0px;
+	
+	}
+	#coordX, #coordY{
+		width:50px;
+	}
+	#xBar, #yBar{
+	visibility: hidden;
+	
+	}
+@keyframes example {
+    0%   {background-color: red;color: white;}
+    25%  {background-color: yellow; color: black;}
+    50%  {background-color: blue; color: yellow;}
+    100% {background-color: green; }
+}
+button{
+	width: 33%;
+	font-size:1em;
+}
+span{
+	font-size:1em;
+}
+</style>	
+<body>
+
+	<h1>Fly Guy: Guessing Game</h1>
+    <div id="intro">
+     In this game, you are to guess the x and y coordinates of where the "fly" is appearing on the screen.
+        <br> <br>
+        <span id="ready">Ready to play? 
+		<input type="submit" id="ButtonYes" value="Yes"></span>
+		 
+    </div>
+	
+	 
+	<!--  onclick="ButtonClickHandler(this)" -->
+	<div id="name"></div>
+	<div id="gameBoard">
+		<img src="images/flyguy40x40.png" id="fly">
+	
+		<div id="holder">Your Guess is: (<input type="text" id="coordX" placeholder="x">,<input id="coordY" type="text"placeholder="y">) <br><button id="Check">Check</button><button id="Hint">Hint</button><button id="Again">Go Again</button>
+		<span id="hintIs"><br>Each Square is 30 x 30; <br>(0,0) is located at the top left corner. <br>The bottom right corner is (300,300)</br></span></div>
+	</div>
+	
+		
+	 
+</body>
+
+<script>
+	var startButton = document.querySelector("#ButtonYes");
+	startButton.addEventListener("click", startGame, false);
+	var AgainButton = document.querySelector("#Again");
+	AgainButton.addEventListener("click", startGame, false);
+	var CheckButton = document.querySelector("#Check");
+	CheckButton.addEventListener("click", Checking, false);
+	var HintButton = document.querySelector("#Hint");
+	HintButton.addEventListener("click", GivingHint, false);
+	var hint = document.querySelector("#HintIs");
+	var gameBoard = document.querySelector("#gameBoard");
+	var setFly = document.querySelector("#fly");
+	var xBar = document.querySelector("#xBar");
+	var yBar = document.querySelector("#yBar");
+	var SetY = getRandomY();
+	var SetX = getRandomX();
+	var GuessX = document.querySelector("#coordX");
+	var GuessY = document.querySelector("#coordY");
+	function startGame()
+	{
+		SetY = getRandomY();
+		SetX = getRandomX();
+		gameBoard.style.visibility = "visible";
+		setFly.style.position = "relative";
+		setFly.style.top = SetX + "px";
+		setFly.style.left =SetY + "px";
+		hint.innerHTML = "<br>Each Square is 30 x 30; <br>(0,0) is located at the top left corner. <br>The bottom right corner is (300,300)</br>";
+		GuessX.reset();
+		GuessY.reset();
+	} 
+	
+	function getRandomY(){ 
+		var y;
+		y = Math.ceil(Math.random() *100); 
+		//alert("Y is " + y); 
+		return y; 
+	} 
+	function getRandomX(){
+	var x;
+		x = Math.ceil(Math.random() *100); 
+		//alert("x is " + x);
+		return x;
+	}
+	function Checking()
+	{
+		if((GuessX.value == SetX) && (GuessY.value == SetY))
+		{
+			alert("You guessed Correctly!");
+			setFly.style.animation = "example 10s 5";
+		}
+		else
+		{
+			alert("You guessed wrong!, you guessed ("+ GuessX.value +"," + GuessY.value + ") and it was(" + SetX+", " + SetY+")");
+		} 
+	}
+	function GivingHint()
+	{
+		var lowX = SetX - 5;
+		var highX = SetX + 5;
+		var lowY = SetY - 5;
+		var highY = SetY + 5;
+		var hint = "X is between " + lowX + "  and " + highX + " . <br>Y is between " + lowY + " and " + highY + "<br><br>Each Square is 30 x 30. </br>(0,0) is located at the top left corner. <br>The bottom right corner is (300,300)";
+		hintIs.innerHTML = hint;
+		
+	}
+	
+
+</script>
+</html>
+
+
+	
+	
+	
